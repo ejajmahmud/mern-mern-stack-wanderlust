@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" version="25.0.3">
+  <diagram name="Page-1" id="STsw18zG9g2Aniqm7wm5">
+    <mxGraphModel dx="1434" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Qd95VcdBI9w7NiPi-sb6-4" target="Qd95VcdBI9w7NiPi-sb6-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-1" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.user;" vertex="1" parent="1">
+          <mxGeometry x="112.5" y="540" width="47.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Qd95VcdBI9w7NiPi-sb6-7" target="Qd95VcdBI9w7NiPi-sb6-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="155" y="380" as="sourcePoint" />
+            <mxPoint x="155" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.031;entryY=0.578;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Qd95VcdBI9w7NiPi-sb6-4" target="Qd95VcdBI9w7NiPi-sb6-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-4" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="82.5" y="190" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-6" value="DEV branch" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="210" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Qd95VcdBI9w7NiPi-sb6-2" target="Qd95VcdBI9w7NiPi-sb6-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="149" y="450" as="sourcePoint" />
+            <mxPoint x="148" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-7" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="82.5" y="340" width="105" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-9" value="Feature Branch" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="106.25" y="360" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-10" value="PR" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="280" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-11" value="Developer" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="560" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Qd95VcdBI9w7NiPi-sb6-1" target="Qd95VcdBI9w7NiPi-sb6-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="136" y="540" as="sourcePoint" />
+            <mxPoint x="148" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-2" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.git_repository;" vertex="1" parent="1">
+          <mxGeometry x="90" y="430" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-15" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/socialcones/508/Gitlab-128.png" vertex="1" parent="1">
+          <mxGeometry x="280" y="150" width="128" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-17" value="GITLAB Repo-CI" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="240" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-18" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="530" y="150" width="250" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-19" value="Development ENV" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="180" width="110" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-20" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="1">
+          <mxGeometry x="620" y="354.5" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-21" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Cache_Redis_Product.svg;" vertex="1" parent="1">
+          <mxGeometry x="660" y="290" width="38.1" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-22" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="330" width="230" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-23" value="Docker Host" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="590" y="325" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-24" value="" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.mongodb;" vertex="1" parent="1">
+          <mxGeometry x="730" y="283" width="47.400000000000006" height="47.400000000000006" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-25" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.android;fillColor=#8CC64F;gradientColor=none;" vertex="1" parent="1">
+          <mxGeometry x="590" y="277" width="50" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-26" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn1.iconfinder.com/data/icons/ionicons-fill-vol-2/512/logo-javascript-128.png" vertex="1" parent="1">
+          <mxGeometry x="540" y="283" width="38" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="Qd95VcdBI9w7NiPi-sb6-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.02;entryY=0.864;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Qd95VcdBI9w7NiPi-sb6-15" target="Qd95VcdBI9w7NiPi-sb6-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

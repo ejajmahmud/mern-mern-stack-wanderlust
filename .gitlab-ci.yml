@@ -1,0 +1,126 @@
+stages:
+  - compile
+  - sonarqube-check
+  - sonarqube-vulnerability-report
+  - owasp-check
+  - build
+  - deploy
+
+variables:
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+  GIT_DEPTH: "0"
+  FRONTEND_IMAGE: registry.gitlab.com/vp.prashob/mern-stack-wanderlust/frontend
+  BACKEND_IMAGE: registry.gitlab.com/vp.prashob/mern-stack-wanderlust/backend
+  REDIS_IMAGE: redis:7
+  MONGO_IMAGE: mongo:6.0
+  MONGO_VOLUME: /data/db
+  GKE_CLUSTER_NAME: $GKE_CLUSTER_NAME
+  GKE_CLUSTER_ZONE: $GKE_CLUSTER_ZONE
+  GCP_PROJECT_ID: $GCP_PROJECT_ID
+
+compile-job:
+  stage: compile
+  tags:
+    - "cicdserver"
+  image: node:16
+  script:
+    - echo "Compiling the code..."
+    - npm install  
+
+sonarqube-check:
+  stage: sonarqube-check
+  image: 
+    name: sonarsource/sonar-scanner-cli:11
+    entrypoint: [""]  
+  script: 
+    - sonar-scanner -Dsonar.host.url="${SONAR_HOST_URL}"
+  allow_failure: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH == 'Prod'
+    - if: $CI_COMMIT_BRANCH == 'main'
+   
+
+sonarqube-vulnerability-report:
+  stage: sonarqube-vulnerability-report
+  image: 
+    name: sonarsource/sonar-scanner-cli:11
+    entrypoint: [""]  
+  script:
+    - 'curl -u "${SONAR_TOKEN}:" "${SONAR_HOST_URL}/api/issues/gitlab_sast_export?projectKey=vp.prashob_mern-stack-wanderlust_e84b571e-7af9-4d00-b9e2-3f5494a5749a&branch=${CI_COMMIT_BRANCH}&pullRequest=${CI_MERGE_REQUEST_IID}" -o gl-sast-sonar-report.json'
+  allow_failure: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    - if: $CI_COMMIT_BRANCH == 'Prod'
+    - if: $CI_COMMIT_BRANCH == 'main'
+   
+  artifacts:
+    expire_in: 1 day
+    reports:
+      sast: gl-sast-sonar-report.json
+
+owasp-check:
+  stage: owasp-check
+  image: owasp/dependency-check:latest
+  script:
+    - echo "Running OWASP Dependency Check..."
+    - dependency-check.sh --project "MERNS-Wanderlust" --scan ./ --format "yaml" --out dependency-check-report
+  allow_failure: true
+  artifacts:
+    paths:
+      - dependency-check-report/
+    expire_in: 1 day
+
+build-frontend:
+  stage: build
+  tags:
+    - "cicdserver"
+  image: docker:24
+  services:
+    - docker:24-dind
+  script:
+    - echo "Logging into GitLab registry..."
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+    - echo "Building frontend Docker image..."
+    - docker build -t $FRONTEND_IMAGE -f ./frontend/Dockerfile ./frontend
+    - docker push $FRONTEND_IMAGE
+
+build-backend:
+  stage: build
+  tags:
+    - "cicdserver"
+  image: docker:24
+  services:
+    - docker:24-dind
+  script:
+    - echo "Logging into GitLab registry..."
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+    - echo "Building backend Docker image..."
+    - docker build -t $BACKEND_IMAGE -f ./backend/Dockerfile ./backend
+    - docker push $BACKEND_IMAGE
+    
+
+
+deploy-to-gke:
+  stage: deploy
+  image: google/cloud-sdk:latest
+  script:
+    - echo "Authenticating with GCP..."
+    - echo "$GOOGLE_CREDENTIALS_GKE" > gcloud-key.json
+    - gcloud auth activate-service-account --key-file=gcloud-key.json
+    - gcloud config set project $GCP_PROJECT_ID
+    - gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_CLUSTER_ZONE
+
+    # Create namespace (if not exists)
+    - kubectl create namespace wanderlust || true
+
+    # Install Helm
+    - echo "Installing Helm..."
+    - curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+    # Deploy Using Local Helm Chart
+    - echo "Deploying to GKE using Helm with local chart..."
+    - helm upgrade --install my-wanderlust ./Helm --namespace wanderlust --set image.repository=$BACKEND_IMAGE --set image.tag=$CI_COMMIT_SHA --set replicas=3 --values ./Helm/values.yaml 
+  only:
+    - main
+   

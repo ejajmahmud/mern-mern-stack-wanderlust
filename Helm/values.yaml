@@ -1,0 +1,30 @@
+backend:
+  image:
+   repository: "registry.gitlab.com/vp.prashob/mern-stack-wanderlust/backend"
+   tag: "latest" # Or any other tag that your pipeline generates (e.g., $CI_COMMIT_SHA)
+   pullPolicy: IfNotPresent
+  replicas: 1
+  port: 5000
+  env:
+    MONGODB_URI: "mongodb://mongo-service:27017/wanderlust"
+    REDIS_URL: "redis://redis:6379"
+
+frontend:
+  image:
+   repository: "registry.gitlab.com/vp.prashob/mern-stack-wanderlust/frontend"
+   tag: "latest" 
+  replicas: 1
+  port: 5173
+  env:
+    VITE_API_PATH: "http://$(kubectl get svc backend -o jsonpath='{.status.loadBalancer.ingress[0].ip}'):5000"
+
+mongo:
+  image: mongo
+  replicas: 1
+  port: 27017
+
+redis:
+  image: redis
+  replicas: 1
+  port: 6379
+
